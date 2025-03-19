@@ -42,7 +42,8 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.196</version>
+            <version>1.4.200</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -86,7 +87,8 @@
                         <dependency>
                             <groupId>com.h2database</groupId>
                             <artifactId>h2</artifactId>
-                            <version>1.4.196</version>
+                            <version>1.4.200</version>
+                            <scope>runtime</scope>
                         </dependency>
                     </dependencies>
                 </plugin>
