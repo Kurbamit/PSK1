@@ -70,6 +70,32 @@ public class CarsForOwner implements Serializable {
 //        return "/index";
     }
 
+    @Transactional
+    public String createCarAndPart() {
+        // Set the owner for the new car
+        carToCreate.setOwner(this.owner);
+
+        // Initialize the parts list if it's null
+        if (carToCreate.getParts() == null) {
+            carToCreate.setParts(new ArrayList<>());
+        }
+
+        // Initialize the cars list if it's null
+        if (partToAdd.getCars() == null) {
+            partToAdd.setCars(new ArrayList<>());
+        }
+
+        // Update both sides of the many-to-many relationship
+        partToAdd.getCars().add(carToCreate);
+        carToCreate.getParts().add(partToAdd);
+
+        // Persist entities
+        carsDAO.persist(carToCreate);
+        partsDAO.persist(partToAdd);
+
+        return "cars?faces-redirect=true&ownerId=" + this.owner.getId();
+    }
+
     @PostConstruct
     private void init() {
         Map<String, String > requestParams = getCurrentInstance()
@@ -84,5 +110,7 @@ public class CarsForOwner implements Serializable {
         for (Part part : availableParts) {
             this.allParts.add(new SelectItem(part, part.getName()));
         }
+        carToCreate = new Car();
+        partToAdd = new Part();
     }
 }

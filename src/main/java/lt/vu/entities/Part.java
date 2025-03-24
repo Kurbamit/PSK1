@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -43,8 +44,7 @@ public class Part {
             joinColumns = @JoinColumn(name = "PART_ID"),
             inverseJoinColumns = @JoinColumn(name = "CAR_ID")
     )
-    List<Car> cars;
-
+    List<Car> cars = new ArrayList<>();
 
     public Part(String name) {
         this.name = name;

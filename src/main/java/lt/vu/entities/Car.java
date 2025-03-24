@@ -36,13 +36,11 @@ public class Car {
     int price;
 
     // Owning side
-    // @ManyToOne
     @ManyToOne
-    @JoinColumn(name = "OWNER_ID")
     Owner owner;
 
     @ManyToMany(mappedBy = "cars")
-    List<Part> parts;
+    List<Part> parts = new ArrayList<>();
 
     public Car(String title) {
         this.title = title;

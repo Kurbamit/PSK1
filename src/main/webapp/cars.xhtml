@@ -14,6 +14,7 @@
             <li><h:link value="#{car.title} #{car.price}" outcome="/parts?carId=#{car.id}"/></li>
         </ui:repeat>
     </ol>
+    <p>Add only car:</p>
     <h:form>
         <label>Car title: </label>
         <h:inputText a:placeholder="title" value="#{carsForOwner.carToCreate.title}" required="true"/>
@@ -22,6 +23,25 @@
             <f:param name="ownerId" value="#{carsForOwner.owner.id}" />
         </h:commandButton>
     </h:form>
+
+    <h:form>
+        <label>Car title: </label>
+        <h:inputText placeholder="title" value="#{carsForOwner.carToCreate.title}" required="true"/>
+
+        <label>Price: </label>
+        <h:inputText placeholder="price" value="#{carsForOwner.carToCreate.price}" required="true"/>
+
+        <label>Car title: </label>
+        <h:inputText placeholder="name" value="#{carsForOwner.partToAdd.name}" required="true"/>
+
+        <label>Price: </label>
+        <h:inputText placeholder="price" value="#{carsForOwner.partToAdd.price}" required="true"/>
+
+        <h:commandButton value="Add Car and Part to Owner" action="#{carsForOwner.createCarAndPart}">
+            <f:param name="ownerId" value="#{carsForOwner.owner.id}" />
+        </h:commandButton>
+    </h:form>
+
     <h:link outcome="index?faces-redirect=true" value="Back to owners page"/>
 
 </h:body>
