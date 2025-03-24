@@ -31,6 +31,7 @@ public class Owner {
     @Column(name = "FULL_NAME")
     String fullName;
 
+    // @OneToMany(mappedBy = "owner")
     @OneToMany
     @JoinColumn(name = "OWNER_ID")
     private List<Car> cars = new ArrayList<Car>();

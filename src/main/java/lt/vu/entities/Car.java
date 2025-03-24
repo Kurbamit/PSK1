@@ -35,6 +35,8 @@ public class Car {
     @Column(name = "PRICE")
     int price;
 
+    // Owning side
+    // @ManyToOne
     @ManyToOne
     @JoinColumn(name = "OWNER_ID")
     Owner owner;
