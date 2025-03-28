@@ -34,6 +34,14 @@
             <f:param name="carId" value="#{partsForCar.car.id}" />
         </h:commandButton>
     </h:form>
+
+    <h:form>
+        <h:outputText value="#{generateCarPriceNumber.carPriceGenerationStatus}" />
+        <h:commandButton value="Generate car price?" disabled="#{generateCarPriceNumber.carPriceGenerationRunning}" action="#{generateCarPriceNumber.generateNewCarPrice()}">
+            <f:param name="carId" value="#{updateCarPrice.car.id}" />
+        </h:commandButton>
+    </h:form>
+
     <h:link outcome="index?faces-redirect=true" value="Back to owners page"/>
 
 </h:body>
